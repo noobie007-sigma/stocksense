@@ -1,0 +1,329 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 2rem;
+  background: #f3f4f6;
+  color: #111827;
+}
+
+header {
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  color: #21295c;
+  margin-bottom: 0.25rem;
+}
+
+.tagline {
+  color: #3a4a5c;
+  margin-top: 0;
+}
+
+.search-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+}
+
+#search-input {
+  flex: 1;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+#search-input:focus {
+  outline: 2px solid #065a82;
+  border-color: #065a82;
+}
+
+#search-button {
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  background: #065a82;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#search-button:hover {
+  background: #054864;
+}
+
+#results {
+  max-width: 700px;
+}
+
+.idle-message,
+.error-message,
+.loading-message {
+  color: #3a4a5c;
+  font-size: 1rem;
+  padding: 1rem 0;
+}
+
+.error-message {
+  background: #fdeaea;
+  border-left: 4px solid #dc2626;
+  padding: 1rem;
+  border-radius: 4px;
+  color: #7a1f1f;
+}
+
+/* --- Snapshot Card --- */
+
+.snapshot-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+.snapshot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.snapshot-company-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #21295c;
+  margin: 0;
+}
+
+.snapshot-ticker {
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-weight: 600;
+  background: #eaf2f8;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+.snapshot-price-row {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.snapshot-stat-label {
+  font-size: 0.78rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.15rem;
+}
+
+.snapshot-stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.snapshot-sector {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: #1c7293;
+  background: #eaf2f8;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.snapshot-description {
+  font-size: 0.95rem;
+  color: #3a4a5c;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+.snapshot-updated {
+  font-size: 0.78rem;
+  color: #9aa5b1;
+  font-style: italic;
+}
+
+/* --- Ratios Card (Day 5) --- */
+
+.ratios-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-size: 1.05rem;
+  color: #21295c;
+  margin: 0 0 1rem 0;
+}
+
+.ratios-empty {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.ratio-row {
+  border-top: 1px solid #eef0f2;
+  padding: 0.85rem 0;
+}
+
+.ratio-row:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.ratio-row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.ratio-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #111827;
+}
+
+.ratio-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.ratio-badge-good {
+  background: #dcf5e3;
+  color: #16a34a;
+}
+
+.ratio-badge-average {
+  background: #fef3d9;
+  color: #b7791f;
+}
+
+.ratio-badge-concerning {
+  background: #fdeaea;
+  color: #dc2626;
+}
+
+.ratio-badge-unknown {
+  background: #eceff1;
+  color: #6b7280;
+}
+
+.ratio-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.15rem;
+}
+
+.ratio-explanation {
+  font-size: 0.85rem;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+.ratios-disclaimer {
+  font-size: 0.78rem;
+  color: #9aa5b1;
+  font-style: italic;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+/* Red Flags section arrives Day 6 — no styles needed yet */
+
+/* Responsive */
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+  .snapshot-price-row {
+    gap: 1rem;
+  }
+}
+/* --- Red Flags Card (Day 6) --- */
+
+.flags-card {
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+.flags-card-clear {
+  background: white;
+  border-left: 4px solid #16a34a;
+}
+
+.flags-card-warning {
+  background: white;
+  border-left: 4px solid #e8a33d;
+}
+
+.flags-clear-message {
+  color: #16a34a;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.flags-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.flag-item {
+  font-size: 0.9rem;
+  color: #3a4a5c;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+
+.flag-item:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Footer (Day 6 — required) --- */
+
+.site-footer {
+  max-width: 700px;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #dde3e8;
+  font-size: 0.8rem;
+  color: #9aa5b1;
+  text-align: center;
+}
+
+/* --- Visual cohesion pass (Day 6) --- */
+/* Unifies spacing rhythm across Snapshot, Ratios, and Red Flags cards */
+
+.snapshot-card,
+.ratios-card,
+.flags-card {
+  margin-bottom: 1.25rem;
+}
