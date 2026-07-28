@@ -1,0 +1,129 @@
+{
+    "datasetMeta": {
+        "lastCompiledDate": "2026-07-25",
+        "sourceNote": "Compiled manually from public company financial summaries for educational purposes. Not real-time data."
+    },
+    "stocks": [
+        {
+            "ticker": "TCS",
+            "bseCode": "532540",
+            "companyName": "Tata Consultancy Services Ltd.",
+            "sector": "Information Technology",
+            "description": "India's largest IT services and consulting company, providing software, digital transformation, and outsourcing services globally.",
+            "price": 3845.20,
+            "marketCap": 1391000000000,
+            "lastUpdated": "2026-07-15",
+            "ratios": {
+                "peRatio": 28.4,
+                "eps": 135.5,
+                "dividendYield": 1.6,
+                "debtToEquity": 0.02
+            },
+            "searchAliases": [
+                "tata consultancy services",
+                "tcs"
+            ]
+        },
+        {
+            "ticker": "INFY",
+            "bseCode": "500209",
+            "companyName": "Infosys Ltd.",
+            "sector": "Information Technology",
+            "description": "A global leader in IT consulting and digital services, headquartered in Bengaluru.",
+            "price": 1620.75,
+            "marketCap": 673000000000,
+            "lastUpdated": "2026-07-15",
+            "ratios": {
+                "peRatio": 24.1,
+                "eps": 67.2,
+                "dividendYield": 2.3,
+                "debtToEquity": 0.09
+            },
+            "searchAliases": [
+                "infosys",
+                "infy"
+            ]
+        },
+        {
+            "ticker": "RELIANCE",
+            "bseCode": "500325",
+            "companyName": "Reliance Industries Ltd.",
+            "sector": "Energy & Conglomerate",
+            "description": "India's largest private-sector company, with businesses spanning energy, retail, and telecommunications (Jio).",
+            "price": 2985.50,
+            "marketCap": 2020000000000,
+            "lastUpdated": "2026-07-14",
+            "ratios": {
+                "peRatio": 26.8,
+                "eps": 111.4,
+                "dividendYield": 0.4,
+                "debtToEquity": 0.41
+            },
+            "searchAliases": [
+                "reliance industries",
+                "reliance",
+                "ril"
+            ]
+        },
+        {
+            "ticker": "HDFCBANK",
+            "bseCode": "500180",
+            "companyName": "HDFC Bank Ltd.",
+            "sector": "Banking & Financial Services",
+            "description": "One of India's largest private-sector banks, offering retail and wholesale banking services.",
+            "price": 1685.30,
+            "marketCap": 1284000000000,
+            "lastUpdated": "2026-07-16",
+            "ratios": {
+                "peRatio": 19.2,
+                "eps": 87.8,
+                "dividendYield": 1.1,
+                "debtToEquity": null
+            },
+            "searchAliases": [
+                "hdfc bank",
+                "hdfcbank"
+            ]
+        },
+        {
+            "ticker": "ITC",
+            "bseCode": "500875",
+            "companyName": "ITC Ltd.",
+            "sector": "Consumer Goods",
+            "description": "A diversified conglomerate with businesses in FMCG, hotels, paperboards, and agribusiness.",
+            "price": 462.10,
+            "marketCap": 578000000000,
+            "lastUpdated": "2026-07-13",
+            "ratios": {
+                "peRatio": 22.6,
+                "eps": 20.4,
+                "dividendYield": 3.2,
+                "debtToEquity": 0.03
+            },
+            "searchAliases": [
+                "itc limited",
+                "itc"
+            ]
+        },
+        {
+            "ticker": "ZOMATO",
+            "bseCode": "543320",
+            "companyName": "Zomato Ltd. (Eternal Ltd.)",
+            "sector": "Internet & Food-Tech",
+            "description": "An online food delivery and quick-commerce platform operating across Indian cities.",
+            "price": 268.90,
+            "marketCap": 258000000000,
+            "lastUpdated": "2026-07-17",
+            "ratios": {
+                "peRatio": 142.5,
+                "eps": 1.9,
+                "dividendYield": null,
+                "debtToEquity": 0.05
+            },
+            "searchAliases": [
+                "zomato",
+                "eternal"
+            ]
+        }
+    ]
+}
