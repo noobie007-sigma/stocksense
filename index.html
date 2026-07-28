@@ -3,23 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StockSense</title>
+  <title>StockSense — Understand any Indian stock in one glance</title>
+  <meta name="description" content="Search any major NSE-listed Indian stock and get a plain-English snapshot, ratio breakdown, and red-flag check — built for beginners, no jargon." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23065A82%22/><path d=%22M20 65 L40 45 L55 58 L80 30%22 stroke=%22white%22 stroke-width=%228%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>StockSense</h1>
-    <p class="tagline">Understand any Indian stock in one glance</p>
+    <div class="logo-row">
+      <div class="logo-mark" aria-hidden="true">📈</div>
+      <h1>StockSense</h1>
+    </div>
+    <p class="tagline">Understand any Indian stock in one glance — no finance degree required</p>
   </header>
 
   <main>
-    <div class="search-bar">
-      <input type="text" id="search-input" placeholder="Search a company or ticker (e.g. TCS)" />
-      <button id="search-button">Search</button>
+    <form class="search-bar" id="search-form" role="search">
+      <label for="search-input" class="visually-hidden">Search a company or ticker</label>
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Search a company or ticker (e.g. TCS)"
+        autocomplete="off"
+        aria-label="Search a company or ticker"
+      />
+      <button type="submit" id="search-button">Search</button>
+    </form>
+
+    <div class="quick-chips" id="quick-chips" aria-label="Example searches">
+      <span class="quick-chips-label">Try:</span>
+      <button type="button" class="chip" data-ticker="TCS">TCS</button>
+      <button type="button" class="chip" data-ticker="RELIANCE">Reliance</button>
+      <button type="button" class="chip" data-ticker="ZOMATO">Zomato</button>
+      <button type="button" class="chip" data-ticker="COALINDIA">Coal India</button>
+      <button type="button" class="chip" data-ticker="BAJFINANCE">Bajaj Finance</button>
     </div>
 
-    <div id="results">
-      <p class="idle-message">Search any major NSE stock to see a plain-English health check.</p>
+    <div id="results" aria-live="polite">
+      <div class="idle-state">
+        <p class="idle-message">Search any major NSE stock above — or tap an example — to see a plain-English health check, all on one screen.</p>
+      </div>
     </div>
   </main>
 

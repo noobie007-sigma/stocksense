@@ -2,81 +2,225 @@
   box-sizing: border-box;
 }
 
+:root {
+  --navy: #21295c;
+  --deep: #065a82;
+  --teal: #1c7293;
+  --ice: #eaf2f8;
+  --slate: #3a4a5c;
+  --gray: #6b7280;
+  --good: #16a34a;
+  --good-bg: #dcf5e3;
+  --average: #b7791f;
+  --average-bg: #fef3d9;
+  --concerning: #dc2626;
+  --concerning-bg: #fdeaea;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
 body {
   font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
   margin: 0;
   padding: 2rem;
   background: #f3f4f6;
   color: #111827;
+  line-height: 1.5;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 header {
   margin-bottom: 1.5rem;
 }
 
+.logo-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-mark {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
 h1 {
-  color: #21295c;
-  margin-bottom: 0.25rem;
+  color: var(--navy);
+  margin: 0;
+  font-size: 1.8rem;
 }
 
 .tagline {
-  color: #3a4a5c;
-  margin-top: 0;
+  color: var(--slate);
+  margin: 0.35rem 0 0 0;
+  font-size: 0.95rem;
 }
 
 .search-bar {
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
   max-width: 600px;
 }
 
 #search-input {
   flex: 1;
-  padding: 0.6rem 0.8rem;
+  padding: 0.65rem 0.9rem;
   font-size: 1rem;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 8px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  min-height: 44px;
 }
 
 #search-input:focus {
-  outline: 2px solid #065a82;
-  border-color: #065a82;
+  outline: none;
+  border-color: var(--deep);
+  box-shadow: 0 0 0 3px rgba(6, 90, 130, 0.15);
 }
 
 #search-button {
-  padding: 0.6rem 1.4rem;
+  padding: 0.65rem 1.4rem;
   font-size: 1rem;
-  background: #065a82;
+  background: var(--deep);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
+  min-height: 44px;
+  transition: background 0.15s ease, transform 0.1s ease;
 }
 
 #search-button:hover {
   background: #054864;
 }
 
+#search-button:active {
+  transform: scale(0.97);
+}
+
+#search-button:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 2px;
+}
+
+.quick-chips {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+}
+
+.quick-chips-label {
+  font-size: 0.82rem;
+  color: var(--gray);
+  margin-right: 0.15rem;
+}
+
+.chip {
+  font-size: 0.82rem;
+  background: white;
+  border: 1px solid #dde3e8;
+  color: var(--deep);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  min-height: 32px;
+}
+
+.chip:hover {
+  background: var(--ice);
+  border-color: var(--deep);
+}
+
+.chip:focus-visible {
+  outline: 2px solid var(--deep);
+  outline-offset: 2px;
+}
+
 #results {
   max-width: 700px;
 }
 
-.idle-message,
-.error-message,
-.loading-message {
-  color: #3a4a5c;
-  font-size: 1rem;
-  padding: 1rem 0;
+.idle-state {
+  padding: 1.25rem 0;
+}
+
+.idle-message {
+  color: var(--slate);
+  font-size: 0.95rem;
+  margin: 0;
 }
 
 .error-message {
-  background: #fdeaea;
-  border-left: 4px solid #dc2626;
-  padding: 1rem;
-  border-radius: 4px;
+  background: var(--concerning-bg);
+  border-left: 4px solid var(--concerning);
+  padding: 1rem 1.1rem;
+  border-radius: 6px;
   color: #7a1f1f;
+  font-size: 0.95rem;
+}
+
+/* --- Fade-in micro-interaction --- */
+
+.fade-in {
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { animation: none; }
+  .chip, #search-button, #search-input { transition: none; }
+}
+
+/* --- Loading Skeleton --- */
+
+.skeleton-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 1.25rem;
+}
+
+.skeleton-line {
+  height: 14px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #eef0f2 25%, #f7f8f9 37%, #eef0f2 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+  margin-bottom: 0.7rem;
+}
+
+.skeleton-title { width: 45%; height: 20px; }
+.skeleton-short { width: 30%; }
+.skeleton-medium { width: 75%; margin-bottom: 0; }
+
+@keyframes shimmer {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-line { animation: none; }
 }
 
 /* --- Snapshot Card --- */
@@ -85,8 +229,8 @@ h1 {
   background: white;
   border-radius: 10px;
   padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  margin-bottom: 1.5rem;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 1.25rem;
 }
 
 .snapshot-header {
@@ -101,15 +245,15 @@ h1 {
 .snapshot-company-name {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #21295c;
+  color: var(--navy);
   margin: 0;
 }
 
 .snapshot-ticker {
   font-size: 0.9rem;
-  color: #6b7280;
+  color: var(--gray);
   font-weight: 600;
-  background: #eaf2f8;
+  background: var(--ice);
   padding: 0.15rem 0.5rem;
   border-radius: 4px;
 }
@@ -123,7 +267,7 @@ h1 {
 
 .snapshot-stat-label {
   font-size: 0.78rem;
-  color: #6b7280;
+  color: var(--gray);
   text-transform: uppercase;
   letter-spacing: 0.03em;
   margin-bottom: 0.15rem;
@@ -138,8 +282,8 @@ h1 {
 .snapshot-sector {
   display: inline-block;
   font-size: 0.85rem;
-  color: #1c7293;
-  background: #eaf2f8;
+  color: var(--teal);
+  background: var(--ice);
   padding: 0.25rem 0.6rem;
   border-radius: 4px;
   margin-bottom: 0.75rem;
@@ -147,7 +291,7 @@ h1 {
 
 .snapshot-description {
   font-size: 0.95rem;
-  color: #3a4a5c;
+  color: var(--slate);
   line-height: 1.5;
   margin-bottom: 0.75rem;
 }
@@ -158,24 +302,24 @@ h1 {
   font-style: italic;
 }
 
-/* --- Ratios Card (Day 5) --- */
+/* --- Ratios Card --- */
 
 .ratios-card {
   background: white;
   border-radius: 10px;
   padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  margin-bottom: 1.5rem;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 1.25rem;
 }
 
 .section-title {
   font-size: 1.05rem;
-  color: #21295c;
+  color: var(--navy);
   margin: 0 0 1rem 0;
 }
 
 .ratios-empty {
-  color: #6b7280;
+  color: var(--gray);
   font-size: 0.95rem;
 }
 
@@ -206,32 +350,20 @@ h1 {
 .ratio-badge {
   font-size: 0.72rem;
   font-weight: 700;
-  padding: 0.2rem 0.55rem;
+  padding: 0.2rem 0.6rem;
   border-radius: 999px;
   text-transform: uppercase;
   letter-spacing: 0.02em;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
 }
 
-.ratio-badge-good {
-  background: #dcf5e3;
-  color: #16a34a;
-}
-
-.ratio-badge-average {
-  background: #fef3d9;
-  color: #b7791f;
-}
-
-.ratio-badge-concerning {
-  background: #fdeaea;
-  color: #dc2626;
-}
-
-.ratio-badge-unknown {
-  background: #eceff1;
-  color: #6b7280;
-}
+.ratio-badge-good { background: var(--good-bg); color: var(--good); }
+.ratio-badge-average { background: var(--average-bg); color: var(--average); }
+.ratio-badge-concerning { background: var(--concerning-bg); color: var(--concerning); }
+.ratio-badge-unknown { background: #eceff1; color: var(--gray); }
 
 .ratio-value {
   font-size: 1.1rem;
@@ -242,8 +374,8 @@ h1 {
 
 .ratio-explanation {
   font-size: 0.85rem;
-  color: #6b7280;
-  line-height: 1.4;
+  color: var(--gray);
+  line-height: 1.45;
 }
 
 .ratios-disclaimer {
@@ -254,38 +386,21 @@ h1 {
   margin-bottom: 0;
 }
 
-/* Red Flags section arrives Day 6 — no styles needed yet */
-
-/* Responsive */
-@media (max-width: 600px) {
-  body {
-    padding: 1rem;
-  }
-  .snapshot-price-row {
-    gap: 1rem;
-  }
-}
-/* --- Red Flags Card (Day 6) --- */
+/* --- Red Flags Card --- */
 
 .flags-card {
+  background: white;
   border-radius: 10px;
   padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  margin-bottom: 1.5rem;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 1.25rem;
 }
 
-.flags-card-clear {
-  background: white;
-  border-left: 4px solid #16a34a;
-}
-
-.flags-card-warning {
-  background: white;
-  border-left: 4px solid #e8a33d;
-}
+.flags-card-clear { border-left: 4px solid var(--good); }
+.flags-card-warning { border-left: 4px solid #e8a33d; }
 
 .flags-clear-message {
-  color: #16a34a;
+  color: var(--good);
   font-weight: 600;
   font-size: 0.95rem;
   margin: 0;
@@ -298,7 +413,7 @@ h1 {
 
 .flag-item {
   font-size: 0.9rem;
-  color: #3a4a5c;
+  color: var(--slate);
   line-height: 1.5;
   margin-bottom: 0.6rem;
 }
@@ -307,7 +422,7 @@ h1 {
   margin-bottom: 0;
 }
 
-/* --- Footer (Day 6 — required) --- */
+/* --- Footer --- */
 
 .site-footer {
   max-width: 700px;
@@ -319,11 +434,12 @@ h1 {
   text-align: center;
 }
 
-/* --- Visual cohesion pass (Day 6) --- */
-/* Unifies spacing rhythm across Snapshot, Ratios, and Red Flags cards */
+/* --- Responsive --- */
 
-.snapshot-card,
-.ratios-card,
-.flags-card {
-  margin-bottom: 1.25rem;
+@media (max-width: 600px) {
+  body { padding: 1.25rem; }
+  h1 { font-size: 1.5rem; }
+  .snapshot-price-row { gap: 1rem; }
+  .search-bar { max-width: 100%; }
+  .quick-chips { max-width: 100%; }
 }
