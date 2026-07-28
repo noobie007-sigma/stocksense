@@ -1,17 +1,24 @@
 // --- Data layer (see docs/API.md for full contract) ---
 
-let stockDataset = null; // cached in-memory after first load
+let stockDatasetPromise = null; // caches the in-flight/resolved promise itself, preventing duplicate fetches
 
-async function loadStockDataset() {
-  if (stockDataset) return stockDataset;
-  const response = await fetch('data/stocks.json');
-  if (!response.ok) throw new Error('Failed to load stock data');
-  const data = await response.json();
-  if (!data.stocks || !Array.isArray(data.stocks) || data.stocks.length === 0) {
-    throw new Error('Stock dataset is empty or malformed');
-  }
-  stockDataset = data;
-  return stockDataset;
+function loadStockDataset() {
+  if (stockDatasetPromise) return stockDatasetPromise;
+
+  stockDatasetPromise = (async () => {
+    const response = await fetch('data/stocks.json');
+    if (!response.ok) throw new Error('Failed to load stock data');
+    const data = await response.json();
+    if (!data.stocks || !Array.isArray(data.stocks) || data.stocks.length === 0) {
+      throw new Error('Stock dataset is empty or malformed');
+    }
+    return data;
+  })();
+
+  // If the fetch fails, clear the cache so a later retry (e.g. after refresh) can try again.
+  stockDatasetPromise.catch(() => { stockDatasetPromise = null; });
+
+  return stockDatasetPromise;
 }
 
 function searchStock(query, dataset) {
@@ -19,7 +26,11 @@ function searchStock(query, dataset) {
   if (!trimmed) return { result: null, reason: 'empty' };
 
   const match = dataset.stocks.find((stock) => {
-    if (stock.ticker.toLowerCase() === trimmed) return true;
+    const ticker = stock.ticker.toLowerCase();
+    if (ticker === trimmed) return true;
+    // Allow partial ticker matches (e.g. "TC" matches "TCS") once the query is at least 2 characters,
+    // to avoid overly broad single-letter matches.
+    if (trimmed.length >= 2 && ticker.startsWith(trimmed)) return true;
     if (stock.companyName.toLowerCase().includes(trimmed)) return true;
     if (stock.searchAliases && stock.searchAliases.some((a) => a.toLowerCase().includes(trimmed))) return true;
     return false;

@@ -81,6 +81,7 @@ h1 {
   border-radius: 8px;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
   min-height: 44px;
+  min-width: 0;
 }
 
 #search-input:focus {
@@ -99,6 +100,7 @@ h1 {
   cursor: pointer;
   font-weight: 600;
   min-height: 44px;
+  flex-shrink: 0;
   transition: background 0.15s ease, transform 0.1s ease;
 }
 
@@ -173,6 +175,7 @@ h1 {
   border-radius: 6px;
   color: #7a1f1f;
   font-size: 0.95rem;
+  overflow-wrap: break-word;
 }
 
 /* --- Fade-in micro-interaction --- */
@@ -231,6 +234,7 @@ h1 {
   padding: 1.5rem;
   box-shadow: var(--card-shadow);
   margin-bottom: 1.25rem;
+  overflow-wrap: break-word;
 }
 
 .snapshot-header {
@@ -256,6 +260,7 @@ h1 {
   background: var(--ice);
   padding: 0.15rem 0.5rem;
   border-radius: 4px;
+  white-space: nowrap;
 }
 
 .snapshot-price-row {
@@ -277,6 +282,7 @@ h1 {
   font-size: 1.25rem;
   font-weight: 700;
   color: #111827;
+  overflow-wrap: break-word;
 }
 
 .snapshot-sector {
@@ -337,7 +343,8 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.4rem;
   margin-bottom: 0.2rem;
 }
 
@@ -416,6 +423,7 @@ h1 {
   color: var(--slate);
   line-height: 1.5;
   margin-bottom: 0.6rem;
+  overflow-wrap: break-word;
 }
 
 .flag-item:last-child {
@@ -442,4 +450,9 @@ h1 {
   .snapshot-price-row { gap: 1rem; }
   .search-bar { max-width: 100%; }
   .quick-chips { max-width: 100%; }
+}
+
+@media (max-width: 340px) {
+  .search-bar { flex-direction: column; }
+  #search-button { width: 100%; }
 }
