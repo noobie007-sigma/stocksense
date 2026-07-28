@@ -65,8 +65,6 @@ function formatPlain(value, decimals = 1) {
 }
 
 // --- Ratio rule engine (Day 5) — docs/API.md getRatioAssessment() ---
-// Thresholds are intentionally simple, transparent educational guidelines — not
-// professional-grade or sector-adjusted financial analysis. Disclosed on-page.
 
 const RATIO_CONFIG = [
   {
@@ -119,12 +117,8 @@ const RATIO_CONFIG = [
   },
 ];
 
-const STATUS_COLOR = {
-  Good: 'good',
-  Average: 'average',
-  Concerning: 'concerning',
-  Unknown: 'unknown',
-};
+const STATUS_COLOR = { Good: 'good', Average: 'average', Concerning: 'concerning', Unknown: 'unknown' };
+const STATUS_ICON = { Good: '✓', Average: '●', Concerning: '⚠', Unknown: '–' };
 
 function getRatioAssessment(ratios) {
   if (!ratios) return [];
@@ -138,12 +132,12 @@ function getRatioAssessment(ratios) {
       displayValue: hasValue ? config.formatter(rawValue) : 'Data not available',
       status: status,
       statusColor: STATUS_COLOR[status] || 'unknown',
+      statusIcon: STATUS_ICON[status] || '–',
     };
   });
 }
 
 // --- Red flag rule engine (Day 6) — docs/API.md getRedFlags() ---
-// Each rule only fires when its underlying field has real data (never flags a null as a concern).
 
 function getRedFlags(stock) {
   const flags = [];
@@ -152,15 +146,12 @@ function getRedFlags(stock) {
   if (r.peRatio !== null && r.peRatio !== undefined && r.peRatio > 40) {
     flags.push(`P/E ratio (${formatPlain(r.peRatio, 1)}) is notably higher than typical — the market may be pricing in a lot of future growth, which carries risk if growth slows.`);
   }
-
   if (r.debtToEquity !== null && r.debtToEquity !== undefined && r.debtToEquity > 1.5) {
     flags.push(`Debt-to-Equity (${formatPlain(r.debtToEquity, 2)}) is high — the company relies significantly on borrowed money, which increases financial risk.`);
   }
-
   if (r.dividendYield !== null && r.dividendYield !== undefined && r.dividendYield === 0) {
     flags.push(`This company currently pays no dividend — fine for growth-focused investors, but worth knowing if you're seeking income.`);
   }
-
   if (r.eps !== null && r.eps !== undefined && r.eps < 5) {
     flags.push(`EPS (₹${formatPlain(r.eps, 2)}) is relatively low — profit generated per share is modest compared to many established companies.`);
   }
@@ -172,7 +163,7 @@ function getRedFlags(stock) {
 
 function renderSnapshot(stock) {
   return `
-    <div class="snapshot-card">
+    <div class="snapshot-card fade-in">
       <div class="snapshot-header">
         <h2 class="snapshot-company-name">${escapeHtml(stock.companyName)}</h2>
         <span class="snapshot-ticker">${escapeHtml(stock.ticker)}</span>
@@ -205,7 +196,7 @@ function renderRatios(ratios) {
 
   if (rows.length === 0) {
     return `
-      <div class="ratios-card">
+      <div class="ratios-card fade-in">
         <h3 class="section-title">Key Ratios, Explained</h3>
         <p class="ratios-empty">Ratio data not available for this stock.</p>
       </div>
@@ -216,7 +207,9 @@ function renderRatios(ratios) {
     <div class="ratio-row">
       <div class="ratio-row-top">
         <span class="ratio-label">${escapeHtml(row.label)}</span>
-        <span class="ratio-badge ratio-badge-${row.statusColor}">${escapeHtml(row.status)}</span>
+        <span class="ratio-badge ratio-badge-${row.statusColor}">
+          <span aria-hidden="true">${row.statusIcon}</span> ${escapeHtml(row.status)}
+        </span>
       </div>
       <div class="ratio-value">${escapeHtml(row.displayValue)}</div>
       <div class="ratio-explanation">${escapeHtml(row.explanation)}</div>
@@ -224,7 +217,7 @@ function renderRatios(ratios) {
   `).join('');
 
   return `
-    <div class="ratios-card">
+    <div class="ratios-card fade-in">
       <h3 class="section-title">Key Ratios, Explained</h3>
       ${rowsHtml}
       <p class="ratios-disclaimer">⚠ These are simplified educational guidelines, not financial advice.</p>
@@ -239,9 +232,9 @@ function renderRedFlags(stock) {
 
   if (flags.length === 0) {
     return `
-      <div class="flags-card flags-card-clear">
+      <div class="flags-card flags-card-clear fade-in">
         <h3 class="section-title">Red Flags</h3>
-        <p class="flags-clear-message">✓ No major red flags detected</p>
+        <p class="flags-clear-message"><span aria-hidden="true">✓</span> No major red flags detected</p>
       </div>
     `;
   }
@@ -249,7 +242,7 @@ function renderRedFlags(stock) {
   const itemsHtml = flags.map((flag) => `<li class="flag-item">${escapeHtml(flag)}</li>`).join('');
 
   return `
-    <div class="flags-card flags-card-warning">
+    <div class="flags-card flags-card-warning fade-in">
       <h3 class="section-title">Red Flags</h3>
       <ul class="flags-list">${itemsHtml}</ul>
     </div>
@@ -263,32 +256,60 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+// --- Loading skeleton (Day 7 polish) ---
+
+function renderSkeleton() {
+  return `
+    <div class="skeleton-card" aria-hidden="true">
+      <div class="skeleton-line skeleton-title"></div>
+      <div class="skeleton-line skeleton-short"></div>
+      <div class="skeleton-line skeleton-medium"></div>
+    </div>
+    <div class="skeleton-card" aria-hidden="true">
+      <div class="skeleton-line skeleton-short"></div>
+      <div class="skeleton-line skeleton-medium"></div>
+      <div class="skeleton-line skeleton-medium"></div>
+    </div>
+    <p class="visually-hidden">Loading stock data…</p>
+  `;
+}
+
 // --- UI wiring ---
 
+const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
-const searchButton = document.getElementById('search-button');
 const resultsDiv = document.getElementById('results');
+const quickChips = document.getElementById('quick-chips');
 
-async function handleSearch() {
-  resultsDiv.innerHTML = '<p class="loading-message">Loading...</p>';
+async function handleSearch(query) {
+  resultsDiv.innerHTML = renderSkeleton();
   try {
     const dataset = await loadStockDataset();
-    const { result, reason } = searchStock(searchInput.value, dataset);
+    const { result, reason } = searchStock(query, dataset);
 
     if (reason === 'empty') {
-      resultsDiv.innerHTML = '<p class="error-message">Please enter a company name or ticker.</p>';
+      resultsDiv.innerHTML = '<div class="error-message fade-in">Please enter a company name or ticker.</div>';
     } else if (reason === 'not_found') {
-      resultsDiv.innerHTML = '<p class="error-message">Couldn\'t find that stock — check the spelling or try a different ticker (e.g. TCS, INFY, RELIANCE).</p>';
+      resultsDiv.innerHTML = '<div class="error-message fade-in">Couldn\'t find that stock — check the spelling or try a different ticker (e.g. TCS, INFY, RELIANCE).</div>';
     } else {
       resultsDiv.innerHTML = renderSnapshot(result) + renderRatios(result.ratios) + renderRedFlags(result);
     }
   } catch (err) {
     console.error(err);
-    resultsDiv.innerHTML = '<p class="error-message">Something went wrong loading stock data. Please refresh.</p>';
+    resultsDiv.innerHTML = '<div class="error-message fade-in">Something went wrong loading stock data. Please refresh.</div>';
   }
 }
 
-searchButton.addEventListener('click', handleSearch);
-searchInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') handleSearch();
+searchForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  handleSearch(searchInput.value);
+});
+
+quickChips.addEventListener('click', (e) => {
+  const chip = e.target.closest('.chip');
+  if (!chip) return;
+  const ticker = chip.dataset.ticker;
+  searchInput.value = ticker;
+  handleSearch(ticker);
+  searchInput.focus();
 });

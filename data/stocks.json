@@ -1,129 +1,176 @@
 {
-    "datasetMeta": {
-        "lastCompiledDate": "2026-07-25",
-        "sourceNote": "Compiled manually from public company financial summaries for educational purposes. Not real-time data."
+  "datasetMeta": {
+    "lastCompiledDate": "2026-07-25",
+    "sourceNote": "Compiled manually from public company financial summaries for educational purposes. Not real-time data."
+  },
+  "stocks": [
+    {
+      "ticker": "TCS",
+      "bseCode": "532540",
+      "companyName": "Tata Consultancy Services Ltd.",
+      "sector": "Information Technology",
+      "description": "India's largest IT services and consulting company, providing software, digital transformation, and outsourcing services globally.",
+      "price": 3845.20,
+      "marketCap": 1391000000000,
+      "lastUpdated": "2026-07-15",
+      "ratios": { "peRatio": 28.4, "eps": 135.5, "dividendYield": 1.6, "debtToEquity": 0.02 },
+      "searchAliases": ["tata consultancy services", "tcs"]
     },
-    "stocks": [
-        {
-            "ticker": "TCS",
-            "bseCode": "532540",
-            "companyName": "Tata Consultancy Services Ltd.",
-            "sector": "Information Technology",
-            "description": "India's largest IT services and consulting company, providing software, digital transformation, and outsourcing services globally.",
-            "price": 3845.20,
-            "marketCap": 1391000000000,
-            "lastUpdated": "2026-07-15",
-            "ratios": {
-                "peRatio": 28.4,
-                "eps": 135.5,
-                "dividendYield": 1.6,
-                "debtToEquity": 0.02
-            },
-            "searchAliases": [
-                "tata consultancy services",
-                "tcs"
-            ]
-        },
-        {
-            "ticker": "INFY",
-            "bseCode": "500209",
-            "companyName": "Infosys Ltd.",
-            "sector": "Information Technology",
-            "description": "A global leader in IT consulting and digital services, headquartered in Bengaluru.",
-            "price": 1620.75,
-            "marketCap": 673000000000,
-            "lastUpdated": "2026-07-15",
-            "ratios": {
-                "peRatio": 24.1,
-                "eps": 67.2,
-                "dividendYield": 2.3,
-                "debtToEquity": 0.09
-            },
-            "searchAliases": [
-                "infosys",
-                "infy"
-            ]
-        },
-        {
-            "ticker": "RELIANCE",
-            "bseCode": "500325",
-            "companyName": "Reliance Industries Ltd.",
-            "sector": "Energy & Conglomerate",
-            "description": "India's largest private-sector company, with businesses spanning energy, retail, and telecommunications (Jio).",
-            "price": 2985.50,
-            "marketCap": 2020000000000,
-            "lastUpdated": "2026-07-14",
-            "ratios": {
-                "peRatio": 26.8,
-                "eps": 111.4,
-                "dividendYield": 0.4,
-                "debtToEquity": 0.41
-            },
-            "searchAliases": [
-                "reliance industries",
-                "reliance",
-                "ril"
-            ]
-        },
-        {
-            "ticker": "HDFCBANK",
-            "bseCode": "500180",
-            "companyName": "HDFC Bank Ltd.",
-            "sector": "Banking & Financial Services",
-            "description": "One of India's largest private-sector banks, offering retail and wholesale banking services.",
-            "price": 1685.30,
-            "marketCap": 1284000000000,
-            "lastUpdated": "2026-07-16",
-            "ratios": {
-                "peRatio": 19.2,
-                "eps": 87.8,
-                "dividendYield": 1.1,
-                "debtToEquity": null
-            },
-            "searchAliases": [
-                "hdfc bank",
-                "hdfcbank"
-            ]
-        },
-        {
-            "ticker": "ITC",
-            "bseCode": "500875",
-            "companyName": "ITC Ltd.",
-            "sector": "Consumer Goods",
-            "description": "A diversified conglomerate with businesses in FMCG, hotels, paperboards, and agribusiness.",
-            "price": 462.10,
-            "marketCap": 578000000000,
-            "lastUpdated": "2026-07-13",
-            "ratios": {
-                "peRatio": 22.6,
-                "eps": 20.4,
-                "dividendYield": 3.2,
-                "debtToEquity": 0.03
-            },
-            "searchAliases": [
-                "itc limited",
-                "itc"
-            ]
-        },
-        {
-            "ticker": "ZOMATO",
-            "bseCode": "543320",
-            "companyName": "Zomato Ltd. (Eternal Ltd.)",
-            "sector": "Internet & Food-Tech",
-            "description": "An online food delivery and quick-commerce platform operating across Indian cities.",
-            "price": 268.90,
-            "marketCap": 258000000000,
-            "lastUpdated": "2026-07-17",
-            "ratios": {
-                "peRatio": 142.5,
-                "eps": 1.9,
-                "dividendYield": null,
-                "debtToEquity": 0.05
-            },
-            "searchAliases": [
-                "zomato",
-                "eternal"
-            ]
-        }
-    ]
+    {
+      "ticker": "INFY",
+      "bseCode": "500209",
+      "companyName": "Infosys Ltd.",
+      "sector": "Information Technology",
+      "description": "A global leader in IT consulting and digital services, headquartered in Bengaluru.",
+      "price": 1620.75,
+      "marketCap": 673000000000,
+      "lastUpdated": "2026-07-15",
+      "ratios": { "peRatio": 24.1, "eps": 67.2, "dividendYield": 2.3, "debtToEquity": 0.09 },
+      "searchAliases": ["infosys", "infy"]
+    },
+    {
+      "ticker": "RELIANCE",
+      "bseCode": "500325",
+      "companyName": "Reliance Industries Ltd.",
+      "sector": "Energy & Conglomerate",
+      "description": "India's largest private-sector company, with businesses spanning energy, retail, and telecommunications (Jio).",
+      "price": 2985.50,
+      "marketCap": 2020000000000,
+      "lastUpdated": "2026-07-14",
+      "ratios": { "peRatio": 26.8, "eps": 111.4, "dividendYield": 0.4, "debtToEquity": 0.41 },
+      "searchAliases": ["reliance industries", "reliance", "ril"]
+    },
+    {
+      "ticker": "HDFCBANK",
+      "bseCode": "500180",
+      "companyName": "HDFC Bank Ltd.",
+      "sector": "Banking & Financial Services",
+      "description": "One of India's largest private-sector banks, offering retail and wholesale banking services.",
+      "price": 1685.30,
+      "marketCap": 1284000000000,
+      "lastUpdated": "2026-07-16",
+      "ratios": { "peRatio": 19.2, "eps": 87.8, "dividendYield": 1.1, "debtToEquity": null },
+      "searchAliases": ["hdfc bank", "hdfcbank"]
+    },
+    {
+      "ticker": "ITC",
+      "bseCode": "500875",
+      "companyName": "ITC Ltd.",
+      "sector": "Consumer Goods",
+      "description": "A diversified conglomerate with businesses in FMCG, hotels, paperboards, and agribusiness.",
+      "price": 462.10,
+      "marketCap": 578000000000,
+      "lastUpdated": "2026-07-13",
+      "ratios": { "peRatio": 22.6, "eps": 20.4, "dividendYield": 3.2, "debtToEquity": 0.03 },
+      "searchAliases": ["itc limited", "itc"]
+    },
+    {
+      "ticker": "ZOMATO",
+      "bseCode": "543320",
+      "companyName": "Zomato Ltd. (Eternal Ltd.)",
+      "sector": "Internet & Food-Tech",
+      "description": "An online food delivery and quick-commerce platform operating across Indian cities.",
+      "price": 268.90,
+      "marketCap": 258000000000,
+      "lastUpdated": "2026-07-17",
+      "ratios": { "peRatio": 142.5, "eps": 1.9, "dividendYield": null, "debtToEquity": 0.05 },
+      "searchAliases": ["zomato", "eternal"]
+    },
+    {
+      "ticker": "MARUTI",
+      "bseCode": "532500",
+      "companyName": "Maruti Suzuki India Ltd.",
+      "sector": "Automobile",
+      "description": "India's largest passenger car manufacturer, known for affordable, fuel-efficient vehicles.",
+      "price": 12480.00,
+      "marketCap": 393000000000,
+      "lastUpdated": "2026-07-18",
+      "ratios": { "peRatio": 27.3, "eps": 457.1, "dividendYield": 1.0, "debtToEquity": 0.01 },
+      "searchAliases": ["maruti suzuki", "maruti"]
+    },
+    {
+      "ticker": "SUNPHARMA",
+      "bseCode": "524715",
+      "companyName": "Sun Pharmaceutical Industries Ltd.",
+      "sector": "Pharmaceuticals",
+      "description": "India's largest pharmaceutical company by market cap, manufacturing generic and specialty medicines worldwide.",
+      "price": 1745.60,
+      "marketCap": 419000000000,
+      "lastUpdated": "2026-07-19",
+      "ratios": { "peRatio": 34.2, "eps": 51.0, "dividendYield": 0.8, "debtToEquity": 0.05 },
+      "searchAliases": ["sun pharma", "sun pharmaceutical", "sunpharma"]
+    },
+    {
+      "ticker": "BAJFINANCE",
+      "bseCode": "500034",
+      "companyName": "Bajaj Finance Ltd.",
+      "sector": "Banking & Financial Services",
+      "description": "A leading non-banking financial company (NBFC) offering consumer lending, SME loans, and wealth management.",
+      "price": 7120.40,
+      "marketCap": 442000000000,
+      "lastUpdated": "2026-07-20",
+      "ratios": { "peRatio": 31.5, "eps": 226.0, "dividendYield": 0.5, "debtToEquity": 3.8 },
+      "searchAliases": ["bajaj finance", "bajfinance"]
+    },
+    {
+      "ticker": "TATASTEEL",
+      "bseCode": "500470",
+      "companyName": "Tata Steel Ltd.",
+      "sector": "Metals & Mining",
+      "description": "One of the world's largest steel producers, with major operations in India and Europe.",
+      "price": 168.25,
+      "marketCap": 210000000000,
+      "lastUpdated": "2026-07-16",
+      "ratios": { "peRatio": 48.6, "eps": 3.5, "dividendYield": 2.1, "debtToEquity": 0.65 },
+      "searchAliases": ["tata steel", "tatasteel"]
+    },
+    {
+      "ticker": "ASIANPAINT",
+      "bseCode": "500820",
+      "companyName": "Asian Paints Ltd.",
+      "sector": "Consumer Goods",
+      "description": "India's largest paint company, manufacturing decorative and industrial coatings.",
+      "price": 2340.15,
+      "marketCap": 224000000000,
+      "lastUpdated": "2026-07-21",
+      "ratios": { "peRatio": 52.1, "eps": 44.9, "dividendYield": 1.4, "debtToEquity": 0.10 },
+      "searchAliases": ["asian paints", "asianpaint"]
+    },
+    {
+      "ticker": "ADANIENT",
+      "bseCode": "512599",
+      "companyName": "Adani Enterprises Ltd.",
+      "sector": "Energy & Conglomerate",
+      "description": "The flagship incubator company of the Adani Group, spanning energy, infrastructure, and resources businesses.",
+      "price": 2865.00,
+      "marketCap": 326000000000,
+      "lastUpdated": "2026-07-22",
+      "ratios": { "peRatio": 68.4, "eps": 41.9, "dividendYield": 0.03, "debtToEquity": 1.9 },
+      "searchAliases": ["adani enterprises", "adanient"]
+    },
+    {
+      "ticker": "WIPRO",
+      "bseCode": "507685",
+      "companyName": "Wipro Ltd.",
+      "sector": "Information Technology",
+      "description": "A global IT services and consulting company headquartered in Bengaluru, serving clients across industries.",
+      "price": 468.30,
+      "marketCap": 245000000000,
+      "lastUpdated": "2026-07-17",
+      "ratios": { "peRatio": 21.5, "eps": 21.8, "dividendYield": 1.9, "debtToEquity": 0.15 },
+      "searchAliases": ["wipro"]
+    },
+    {
+      "ticker": "COALINDIA",
+      "bseCode": "533278",
+      "companyName": "Coal India Ltd.",
+      "sector": "Metals & Mining",
+      "description": "A state-owned enterprise and the world's largest coal-producing company, supplying most of India's coal needs.",
+      "price": 402.70,
+      "marketCap": 248000000000,
+      "lastUpdated": "2026-07-20",
+      "ratios": { "peRatio": 7.8, "eps": 51.6, "dividendYield": 6.4, "debtToEquity": 0.08 },
+      "searchAliases": ["coal india", "coalindia"]
+    }
+  ]
 }

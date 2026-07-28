@@ -92,7 +92,23 @@ Everything needed to start writing real code exists: the exact JSON schema (`doc
 
 ---
 
-## Day 3 — Environment Setup + Curated Dataset + First End-to-End Data Flow
+## Day 3 — Environment Setup + Curated Dataset + First End-to-End Data Flow — ✅ COMPLETED
+
+### What actually happened
+Live Server was installed and confirmed working. 6 real, schema-valid stock records were compiled into `data/stocks.json` (TCS, INFY, RELIANCE, HDFCBANK, ITC, ZOMATO — more can be added incrementally as needed during Days 4–6, since 6 is enough to build and test all v1.0 UI logic against). `loadStockDataset()` and `searchStock()` were implemented exactly per `docs/API.md`. End-to-end flow verified: valid ticker search, partial/alias name search, invalid search, and empty query all behave correctly with no console errors. Full detail in `docs/DAY3-SUMMARY.md`.
+
+### ✅ Completed today
+- [x] Local dev environment (Live Server) installed and verified
+- [x] `data/stocks.json` populated with 6 schema-valid records
+- [x] `loadStockDataset()` and `searchStock()` implemented and working
+- [x] `index.html` built with real search bar + results container
+- [x] `style.css` given minimal functional styling
+- [x] End-to-end tested: valid search, alias search, invalid search, empty query
+- [x] Trunk-based branching strategy confirmed (solo project, direct-to-`main` commits)
+- [x] Code committed and pushed
+
+### ➡️ Handoff notes for Day 4
+The data pipeline is fully working and schema-locked. Day 4 can go straight into building the real, styled **Company Snapshot card**, replacing today's raw-JSON display — no setup, environment, or architecture work remains. Next functions to implement: `formatCurrency()` / `formatLargeNumber()` per `docs/API.md`.
 
 ### 🎯 Objective
 Compile the first real dataset per SCHEMA.md, and get a fully working (if ugly) end-to-end flow: type a ticker → look it up in local JSON → display raw data on screen. This proves the whole pipeline works before any design polish. **No live API, no CORS, no keys — this is simpler than originally planned.**
@@ -154,7 +170,19 @@ Confirm: the dataset is populated and the `searchStock()` pipeline works end-to-
 
 ---
 
-## Day 4 — Core Feature 1: Company Snapshot UI
+## Day 4 — Core Feature 1: Company Snapshot UI — ✅ COMPLETED
+
+### What actually happened
+Built the styled Snapshot card (company name, ticker, sector, price, market cap, description, last-updated date), plus `formatCurrency()`, `formatLargeNumber()`, `formatDate()`, and an `escapeHtml()` safety helper. Verified across multiple stocks including one with a `null` ratio field (doesn't affect Snapshot, confirmed no crash). Reserved empty `#ratios-section`/`#red-flags-section` containers in the DOM for Days 5–6. Full detail in `docs/DAY4-SUMMARY.md`.
+
+### ✅ Completed today
+- [x] Snapshot card renders cleanly for multiple real stocks
+- [x] Loading and error states both work
+- [x] Layout holds up on a resized/narrow browser window
+- [x] Code committed and pushed
+
+### ➡️ Handoff notes for Day 5
+Snapshot card is done and reusable patterns exist (formatting helpers, loading/error states, `escapeHtml`). `#ratios-section` container already exists in `index.html`. Day 5 builds the Key Ratios section directly into it, reusing the same card/section styling conventions.
 
 ### 🎯 Objective
 Turn the raw data dump into the first real, polished feature: a clean company snapshot card — the top section of the single-screen dashboard.
@@ -208,7 +236,20 @@ Snapshot card is done and reusable patterns exist (formatting helpers, loading/e
 
 ---
 
-## Day 5 — Core Feature 2: Key Ratios, Explained in Plain English
+## Day 5 — Core Feature 2: Key Ratios, Explained in Plain English — ✅ COMPLETED
+
+### What actually happened
+Built `getRatioAssessment()` and `RATIO_CONFIG` covering P/E, EPS, Dividend Yield, and Debt-to-Equity — each with formatted value, plain-English explanation, and a Good/Average/Concerning badge. `null` fields handled explicitly (never NaN, never a false zero). Verified across TCS (complete data), HDFC Bank and Zomato (each missing one ratio field). Snapshot card confirmed unaffected. Full detail in `docs/DAY5-SUMMARY.md`.
+
+### ✅ Completed today
+- [x] Ratios section renders below the snapshot card with consistent styling
+- [x] Each ratio has a value, explanation, and color-coded indicator
+- [x] Disclaimer text is present
+- [x] Tested against 3 stocks with varying/missing data
+- [x] Code committed and pushed
+
+### ➡️ Handoff notes for Day 6
+Ratios section complete with reusable card/row pattern. `getRatioAssessment()`'s output ratio values can feed directly into Day 6's red-flag rules. Day 6 builds the Red Flags card directly below, then does a full-page cohesion pass.
 
 ### 🎯 Objective
 Build the heart of the product: a ratios section that doesn't just show numbers, but explains what each one means and whether it looks good, average, or concerning — in plain English.
@@ -261,7 +302,21 @@ Ratios section complete with reusable "row" component pattern. Day 6 builds the 
 
 ---
 
-## Day 6 — Core Feature 3: Red Flags + Visual Cohesion Pass
+## Day 6 — Core Feature 3: Red Flags + Visual Cohesion Pass — ✅ COMPLETED (+ Deployment pulled forward from Day 9)
+
+### What actually happened
+Built `getRedFlags()` (high P/E, high Debt-to-Equity, zero dividend yield, low EPS rules — all null-safe) and the Red Flags card (amber warning / green all-clear states). Added the required footer. Did a spacing/cohesion pass across all three cards. **v1.0 core feature set is complete.** Additionally, per this session's explicit requirement for a live demo by end of Day 6, deployment to GitHub Pages was completed today instead of Day 9 — verified working with zero console errors on the live URL. Full detail in `docs/DAY6-SUMMARY.md`.
+
+### ✅ Completed today
+- [x] Red Flags section works for both "has flags" and "no flags" cases
+- [x] Full-page visual cohesion pass completed
+- [x] Footer added and visible in all states, confirmed on live deployed site
+- [x] **Deployed to GitHub Pages today (moved up from Day 9)** — live and verified
+- [x] Core v1.0 feature set (Snapshot + Ratios + Red Flags) functionally and visually complete
+- [x] Code committed and pushed
+
+### ➡️ Handoff notes for Day 7
+All three core features are live and working. Because deployment already happened today, **Day 9 no longer needs first-time deployment** — it will instead do deeper regression testing of the live site (see Day 9 section, updated below). Day 7 is a decision point exactly as originally planned: attempt stretch goals if on schedule, or use the day as a polish buffer if not. Given deployment is done early, there is likely extra runway — lean toward attempting stretch goal #1 (price chart) unless testing reveals issues first.
 
 ### 🎯 Objective
 Complete the three core v1.0 features by adding the Red Flags section, then do a first cohesion pass so the whole single-screen dashboard feels like one designed product, not three separate sections bolted together.
@@ -422,6 +477,8 @@ Confirm the app is bug-free (or only has known, non-blocking nice-to-fix items r
 ---
 
 ## Day 9 — Deployment to GitHub Pages
+
+> **Note (added Day 6):** Initial deployment was completed early, on Day 6, to satisfy that session's live-demo requirement. Day 9 now focuses on **regression testing the already-live site** after Days 7–8's changes (stretch features and bug fixes), rather than first-time deployment setup. Steps below remain valid for verifying any new pushes still deploy correctly.
 
 ### 🎯 Objective
 Take the tested, working local app and make it live on the public internet via GitHub Pages, then verify the deployed version thoroughly (deployed environments sometimes behave differently than local).
