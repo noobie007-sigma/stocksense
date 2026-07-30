@@ -2,12 +2,18 @@
 
 **Understand any Indian stock in one glance — no finance degree required.**
 
+Search any NSE-listed company, and see a plain-English health check — snapshot, ratios, and red flags — all on one screen, no jargon, no logins.
+
 🔗 **Live app:** https://noobie007-sigma.github.io/stocksense/
 📦 **Repo:** https://github.com/noobie007-sigma/stocksense
 
 Built as a 10-day capstone for the **AB Talks 60-Day Claude AI Challenge**.
 
 ---
+
+## Screenshot
+
+![StockSense showing a full stock analysis dashboard for TCS, including company snapshot, key ratios explained in plain English, and a red flags check](assets/screenshot.png)
 
 ## What it does
 
@@ -18,10 +24,6 @@ Search any major NSE-listed Indian company by name or ticker, and instantly see 
 - **Red Flags** — specific, data-grounded concerns (or a clear "no major red flags" message)
 
 No jargon. No logins. No navigating between pages — everything you need to make sense of a stock is visible on one screen.
-
-## Screenshot
-
-*(Add a screenshot of the live app here before sharing publicly — see `assets/og-image.png` for the social preview banner.)*
 
 ## Tech stack
 
@@ -50,6 +52,9 @@ This repo includes the full design and build history from a real 10-day product 
 - [`docs/UI-WIREFRAMES.md`](docs/UI-WIREFRAMES.md) — user flow & wireframes
 - [`docs/TESTING.md`](docs/TESTING.md) — QA checklist and results
 - [`docs/Implementation_Blueprint_Day2-10.md`](docs/Implementation_Blueprint_Day2-10.md) — full day-by-day build log
+- [`docs/challenge-retrospective.md`](docs/challenge-retrospective.md) — how this project evolved, Day 1 to Day 10
+- [`docs/future-scope.md`](docs/future-scope.md) — 3/6/12-month roadmap
+- [`docs/30-day-growth-plan.md`](docs/30-day-growth-plan.md) — turning this MVP into a fuller product
 
 ## What's out of scope (by design)
 
@@ -57,10 +62,7 @@ No user accounts, no portfolio tracking, no real-time prices, no buy/sell execut
 
 ## What's next
 
-- Connect a live stock data API (once a reliable free option exists for NSE/BSE)
-- Sector-aware ratio thresholds
-- Price history chart
-- Broader beginner personas (total novices, not just the "curious beginner" persona this v1.0 targets)
+See [`docs/future-scope.md`](docs/future-scope.md) for the full roadmap. Short version: a live data API once a reliable free option exists for NSE/BSE, sector-aware ratio thresholds, a price history chart, and support for broader beginner personas.
 
 ## License
 
