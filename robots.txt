@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://noobie007-sigma.github.io/stocksense/sitemap.xml
